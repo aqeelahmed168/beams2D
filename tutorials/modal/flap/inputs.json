@@ -1,0 +1,37 @@
+// Input file for beams2D
+[   
+ {
+    "Name": "Structures",  
+      // Index is used to define each structure, index starts at 0
+      // snConnElems contains the list of the connected structures at the start node
+      // enConnElems contains the list of the connected structures at the end node
+    "Info":[
+        {"startNode": [0.0, 0.0], "endNode": [0.0, 1.0], "snConnStrucs": [], "enConnStrucs": []}
+    ] 
+ },
+ {
+     "Name": "Mesh",
+       // By default 2 nodes for each structure, if nodeCoords are not given linspace is used
+     "Info":[
+         {"structure": 0, "nNodes":11, "nodeCoords":[]}
+     ]
+ },
+ {
+    "Name": "StructureParams",
+      // Structural properties, x-area A, E, I, G, J (SI units)
+      // rho [kg/m3] is the density of bar/beam elements
+      // Strucutre index of -1/0 sets the default values for all structures
+      // Value specified later overrides the default value
+      // I=bh^3/12, h=1 and b=0.1
+    "Info":[
+        {"structure": 0, "A": 0.1, "E": 4E6, "I": 8.333E-5, "rho": 3000}
+    ]
+  },
+  {
+    "Name": "BoundaryConditions",
+      // Specify only fixed and pinned boundary conditions
+    "Info":[
+        {"structure": 0, "startNode": "fixed", "endNode": "free"}
+    ]
+ }
+]

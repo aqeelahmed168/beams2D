@@ -1,0 +1,42 @@
+[   
+ {
+    "Name": "Structures",  
+      // Index is used to define each structure, index starts at 0
+      // snConnElems contains the list of the connected structures at the start node
+      // enConnElems contains the list of the connected structures at the end node
+    "Info":[
+        {"startNode": [0.0,0.0], "endNode": [0.0,6.0], "snConnStrucs": [], "enConnStrucs": [1]},
+        {"startNode": [0.0,6.0], "endNode": [6.0,6.0], "snConnStrucs": [0], "enConnStrucs": [2]}, 
+        {"startNode": [6.0,6.0], "endNode": [6.0,0.0], "snConnStrucs": [1], "enConnStrucs": []}
+    ] 
+ },
+ {
+     "Name": "Mesh",
+       // By default 2 nodes for each structure, if nodeCoords are not given linspace is used
+     "Info":[
+         {"structure": 0, "nNodes":5, "nodeCoords":[]},
+         {"structure": 1, "nNodes":5, "nodeCoords":[]},
+         {"structure": 2, "nNodes":5, "nodeCoords":[]}
+     ]
+ },
+ {
+    "Name": "StructureParams",
+      // Structural properties, x-area A, E, I, G, J (SI units)
+      // rho [kg/m3] is the density of bar/beam elements
+      // Strucutre index of -1/0 sets the default values for all structures
+      // Value specified later overrides the default value
+    "Info":[
+        {"structure": 0, "A": 200E-6, "E": 210E9, "I": 2E-4, "rho": 8.05e3},
+        {"structure": 1, "A": 200E-6, "E": 210E9, "I": 2E-4, "rho": 8.05e3},
+        {"structure": 2, "A": 200E-6, "E": 210E9, "I": 2E-4, "rho": 8.05e3}
+    ]
+  },
+  {
+    "Name": "BoundaryConditions",
+      // Specify only fixed and pinned boundary conditions
+    "Info":[
+        {"structure": 0, "startNode":"fixed", "endNode": "free"},
+        {"structure": 2, "startNode":"free", "endNode": "fixed"}
+    ]
+ }
+]
